@@ -11,9 +11,9 @@ from dataclasses import dataclass
 ## Determine the output path of this data ingestion
 @dataclass
 class DataIngestionConfig:
-        train_data_path: str=os.path.join('artifacts','train.csv')
-        test_data_path: str=os.path.join('artifacts','test.csv')
-        raw_data_path: str=os.path.join('artifacts','data.csv')
+        train_data_path: str=os.path.join('artifacts1','train.csv')
+        test_data_path: str=os.path.join('artifacts1','test.csv')
+        raw_data_path: str=os.path.join('artifacts1','data.csv')
 
 class DataIngestion:
     def __init__(self):
@@ -61,3 +61,4 @@ if __name__=="__main__":
 
 ### WRITE CODE BELOW TO RUN THIS DATA IN THE TERMINAL
 ### python -m src.components.data_ingestion
+### cekcek
