@@ -1,6 +1,6 @@
 import sys
-import logging ## importing logging here is only for checking purpose
-import logger
+from src.logger import logging ## importing logging here is only for checking purpose
+
 
 def error_message_detail(error,error_detail:sys):
     _,_,exc_tb=error_detail.exc_info()
