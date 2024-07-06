@@ -102,10 +102,11 @@ class ModelTrainer:
             #     list(model_report.values()).index(best_model_score)
             # ]
 
-            best_model_name = max(model_report, key=lambda x: model_report[x]['R2_score'])
-            best_model_score = model_report[best_model_name]['R2_score']
+            ## To get best model score and model name from dict
+            best_model_key = max(model_report, key=lambda x: model_report[x]['R2_score'])
+            best_model_score = model_report[best_model_key]['R2_score']
 
-            best_model = models[best_model_name]
+            best_model = models[best_model_key]
 
             if best_model_score<0.6:
                 raise CustomException("No best model found")
@@ -122,7 +123,9 @@ class ModelTrainer:
             r2_square = r2_score(y_test, predicted)
             mae = mean_absolute_error(y_test, predicted)
             rmse = np.sqrt(mean_squared_error(y_test, predicted))
-            return best_model, r2_square, mae, rmse
+
+            # return best_model, r2_square, mae, rmse
+            return best_model
 
 
         except Exception as e:
@@ -137,7 +140,8 @@ train_arr,test_arr,_ = DataTransformation().initiate_data_transformation(train_d
 if __name__=="__main__":
     data_trainer=ModelTrainer()
     output_data_trainer = data_trainer.initiate_model_trainer(train_arr,test_arr,_)
-    print(f"Best model: {output_data_trainer[0]} (R2 Score: {output_data_trainer[1]}, MAE: {output_data_trainer[2]}, RMSE: MAE: {output_data_trainer[3]})")
+    # print(f"Best model: {output_data_trainer[0]} (R2 Score: {output_data_trainer[1]}, MAE: {output_data_trainer[2]}, RMSE: MAE: {output_data_trainer[3]})")
+    print(output_data_trainer)
 
 
 ### WRITE CODE BELOW TO RUN THIS DATA IN THE TERMINAL
